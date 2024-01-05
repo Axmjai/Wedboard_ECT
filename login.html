@@ -9,11 +9,11 @@
 <body>
     <h1 style="text-align: center;"> Login Wedboard Suphakorn</h1>
     <hr>
-    <form action="">
+    <form action="verify.php" method="post">
     <table style="border:2px solid black;width: 30%;" align="center">
         <tr><td colspan="2" style="background-color: #bde2f1;text-align: center;">เข้าสู่ระบบ</td></tr>
-        <tr><td>LOGIN</td><td><input type="text" name="login" size="50"></td></tr>
-        <tr><td>PASSWORD</td><td><input type="password" name="pwd" size="50"></td></tr>
+        <tr><td>LOGIN</td><td><input type="text" name="login" size="50" required></td></tr>
+        <tr><td>PASSWORD</td><td><input type="password" name="pwd" size="50" required></td></tr>
         
         <tr><td colspan="2" align="center"><input type="submit" value="LOGIN"> </td></tr>
     </table>
@@ -21,7 +21,8 @@
     <div style="text-align: center;">
         ถ้ายังไม่ได้เป็นสมาชิก <a href="register.html">กรุณาสมัครสมาชิก</a>
     </div>
-       
+               
 </form>
+
 </body>
 </html>

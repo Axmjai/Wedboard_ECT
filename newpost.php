@@ -10,7 +10,7 @@ session_start();
 </head>
 <body>
     <?php
-        if(isset($_SESSION['id']) && $_SESSION['username']){
+        if(isset($_SESSION['id'])){
             echo "<br><div style='float: left;'>       
             ผู้ใช้งานระบบ : $_SESSION[username]&nbsp;&nbsp;&nbsp;<br><br>
                 </div>";

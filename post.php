@@ -8,8 +8,9 @@
 <body>
 <h1 style="text-align: center;">Wedboard Suphakorn</h1>
     <hr>   
-<div style="text-align: center;"><?php 
-                  $id = $_GET['id']; 
+<div style="text-align: center;">
+<?php 
+    $id = $_GET['id']; 
     echo "ต้องการดูกระทู้หมายเลข $id <br>";
     if(($id %2)==0){
         echo "เป็นกระทู้หมายเลขคู่";

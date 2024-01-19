@@ -3,6 +3,13 @@
 ?>
 
 
+<?php
+if(isset($_SESSION['id'])){
+    header("location:index.php");
+    
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

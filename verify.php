@@ -1,54 +1,29 @@
 <?php   
     session_start();
-?>
-
-<?php
- 
 if(isset($_SESSION['id'])){
     header("location:index.php");
     die();
     }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify</title>
-</head>
-<body>
-
-   <div style="text-align: center;">
-   <?php
-    $login = $_POST['login'];
-    $pwd = $_POST['pwd'];
-    if($login == 'admin' && $pwd == '1234'){
-        $_SESSION['username']='ADMIN';
-        $_SESSION['role']='a';
-        $_SESSION['id']=session_id();
+    $login=$_POST['login'];
+    $pwd=$_POST['pwd'];
+    $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
+    $sql="seleCT * FROM user where login='$login' and password=sha1('$pwd')";
+    $result=$conn->query($sql);
+    if ($result->rowCount() == 1) {
+        $data=$result->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['username'] = $data['login'];
+        $_SESSION['role'] = $data['role'];
+        $_SESSION['user_id'] = $data['id'];
+        $_SESSION['id'] = session_id();
         header("location:index.php");
         die();
-   // echo "ยินดีต้อนรับคุณ ADMIN <br>";
-    
-    }
-    elseif($login == 'member' && $pwd == '1234'){
-        $_SESSION['username']='MEMBER';
-        $_SESSION['role']='m';
-        $_SESSION['id']=session_id();
-        header("location:index.php");
-        die();
-    //    echo "ยินดีต้อนรับคุณ MEMBER <br>";
     }
     else{
-        $_SESSION['error']='error';
+        $_SESSION['erroe']= "error";
         header("location:login.php");
         die();
-      //  echo "ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง <br>";
+
     }
-        ?>
-        </div>
-        
+    $conn=null;
+?>
     
-</body>
-</html>

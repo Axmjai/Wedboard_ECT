@@ -24,11 +24,19 @@ session_start();
   <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     --ทั้งหมด--
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu" aria-labelledby="Button2">
     <li><a class="dropdown-item" href="#">ทั้งหมด</a></li>
-    <li><a class="dropdown-item" href="#">เรื่องเรียน</a></li>
-    <li><a class="dropdown-item" href="#">เรื่องทั่วไป</a></li>
-  </ul>
+    <?php 
+          $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
+          $sql="SELECT * FROM category";
+          foreach($conn->query($sql) as $row){
+            echo"<li> <a class=dropdown-item href=#>$row[name]</a>></a></li>";
+
+          }
+          $conn=null;
+    ?>
+
+</ul>
 </span>
     </div>
             <?php if(isset($_SESSION['id'])){ ?>
@@ -47,18 +55,22 @@ session_start();
    //     </div>";
    // }
         ?>
-    
 </form>     
         <table class="table table-striped mt-4">
-           
+
            <?php 
-                for($n = 1 ;$n <=10;$n++){
-                    echo "<tr><td class='d-flex justify-content-between'><a href=post.php?id=$n style=text-decoration:none>กระทู้ที่ $n</a>";
-                        if(isset($_SESSION['id']) && $_SESSION['role']=='a'){
-                            echo "&nbsp;&nbsp;&nbsp;<a href=delete.php?id=$n class='btn btn-danger btn-sm me-2'><i class='bi bi-trash3-fill'></i></a>"; 
-                    }
-                    echo "</td></tr>";
-                }
+             $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
+            $sql = "SELECT t3.name,t1.title,t1.id,t2.login,t1.post_date FROM post as t1
+            INNER JOIN user as t2 ON (t1.user_id=t2.id)
+            INNER JOIN category as t3 ON (t1.cat_id=t3.id) ORDer BY t1.post_date desC
+            ";
+            $result = $conn->query($sql);
+            while($row = $result->fetch()){
+                echo "<tr><td>[$row[0] <a href= post.php?id=$row[2]
+                style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td></tr>";
+            }
+            $conn=null;
+
                 
             
             ?>

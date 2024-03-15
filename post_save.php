@@ -9,4 +9,7 @@
     VALUES ('$comment',NOW(),$user_id,$post_id)";
     $conn->exec($sql);
     header("localtion:post.php?id=$post_id");
+    header("location:register.php");
+    die();
+
 ?> 

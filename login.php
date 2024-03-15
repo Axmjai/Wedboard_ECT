@@ -16,6 +16,7 @@ if(isset($_SESSION['id'])){
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>LOGIN</title>
+
 </head>
 <body>
 <div class="container">
@@ -39,12 +40,20 @@ if(isset($_SESSION['id'])){
                         <label for="user" class="form-lable ">Login:</label>
                         <input type="text" id="user" class="form-control mt-2" name="login" required>
                     </div>
+
                     <div class="form-group mt-2">
                         <label for="pwd" class="form-label mt-1 ">Password:</label>
+                        <div class="input-group">
                         <input type="password" name="pwd" id="pwd" class="form-control" required>
+                        <span class="input-group-text" onclick="PasswordShow()">
+                            <i class="bi bi-eye-fill" id="show"></i>
+                            <i class="bi bi-eye-slash-fill d-none" id="none"></i>
+                        </span>    
                     </div>
-                    <div class="mt-3 d-flex justify-content-center">
+                        
+                    </div>
 
+                    <div class="mt-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-secondary btn-sm me-2">Login</button>
                         <button type="reset"  class="btn btn-danger btn-sm">Reset</button>
                     </div>
@@ -61,5 +70,26 @@ if(isset($_SESSION['id'])){
                
 </form>
 </div>
+<script>
+    function PasswordShow(){
+        let x= document.getElementById("pwd");
+        let showeye = document.getElementById("show");
+        let noneeye = document.getElementById("none");
+        noneeye.classList.remove("d-none");
+        if(x.type=="password"){
+            x.type="text";
+            showeye.style.display="none";
+            noneeye.style.display="block";
+
+        }
+        else{
+            x.type="password";
+            showeye.style.display="block";
+            noneeye.style.display="none";
+        }
+    }
+
+
+</script>
 </body>
 </html>

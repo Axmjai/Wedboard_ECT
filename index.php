@@ -11,6 +11,13 @@ session_start();
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Wedboard</title>
+    <script>
+        function myfuntion(){
+            let r=confirm("ต้องการจะลบจริงหรอไม่?");
+            return r;
+        }
+
+    </script>
 </head>
 <body>
     <div class="container">
@@ -44,17 +51,7 @@ session_start();
                     <i class="bi bi-plus"></i> สร้างกระทู้ใหม่</a></div>
                 <?php } ?>
                 </div>
-        <?php
-   // if(!isset($_SESSION['id'])){
-   //     echo "<a href=login.php style='float: right;'>เข้าสู่ระบบ</a>";
-   // }
-   // else{
-   //     echo "<div style='float: right;'>
-   //     ผู้ใช้งานระบบ : $_SESSION[username]&nbsp;&nbsp;&nbsp;
-    //    <a href=logout.php>ออกจากระบบ</a>
-   //     </div>";
-   // }
-        ?>
+        
 </form>     
         <table class="table table-striped mt-4">
 
@@ -66,20 +63,17 @@ session_start();
             $result = $conn->query($sql);
             while($row = $result->fetch()){
                 
-                echo "<tr><td>[$row[0] <a href= post.php?id=$row[2]
-                style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</td></tr>";
+            echo "<tr><td class='d-flex justify-content-between'>
+           <div>[$row[0] <a href= post.php?id=$row[2]
+            style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</div>";
+            if(isset($_SESSION['id']) && $_SESSION['role'] == 'a'){
+               echo"<div class='me-2 align-seft-center'><a href=delete.php?id=$row[2]
+               class='btn btn-danger btn-sm' onclick='return myfuntion()'>
+               <i class='bi bi-trash'></i></a></div>";
+                
             }
-            $conn=null;
-
-                      //echo "<tr><td>class='d-flex justify-content-between'
-         //   <div>[$row[0] <a href= post.php?id=$row[2]
-         //   style=text-decoration:none>$row[1]</a><br>$row[3] - $row[4]</div>";
-         //   if(isset($_SESSION['id']) && $_SESSION['role'] == 'a'){
-          //      echo"<div class='me-2 mt-2'>
-          //      
-        
-                 
-            
+        }
+            $conn=null;        
             ?>
         </table>
             </div>

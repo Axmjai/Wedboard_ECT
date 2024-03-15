@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2024 at 06:23 AM
+-- Generation Time: Mar 15, 2024 at 05:50 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -60,10 +60,11 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `content`, `post_date`, `user_id`, `post_id`) VALUES
-(1, 'สวัสดี                        ', '2024-03-08 10:50:25', 5, 3),
-(4, 'Super                 ', '2024-03-08 10:55:14', 5, 3),
-(5, 'เยอะมากๆ               ', '2024-03-08 10:55:33', 5, 1),
-(6, 'กวาดบ้าน                        ', '2024-03-08 11:21:15', 5, 2);
+(7, 'อยากไปเที่ยว', '2024-03-15 09:55:37', 7, 4),
+(8, 'อยากไปมากๆ', '2024-03-15 09:56:46', 7, 4),
+(9, 'เเต่มันเหนื่อย                        ', '2024-03-15 11:03:54', 7, 5),
+(10, 'มันดีย์              ', '2024-03-15 11:05:12', 7, 5),
+(11, 'อาหารอร่อย                  ', '2024-03-15 11:06:21', 7, 4);
 
 -- --------------------------------------------------------
 
@@ -85,10 +86,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `content`, `post_date`, `cat_id`, `user_id`) VALUES
-(1, 'งานบ้าน', 'asdq', '2024-03-01 12:08:11', 1, 6),
-(2, 'งานบ้านlk', 'adsad', '2024-03-01 12:24:20', 1, 6),
-(3, 'งานบ้านaa', 'asdqwd', '2024-03-01 12:24:32', 1, 6),
-(4, 'งานวัด', 'ใหญ่มาก', '2024-03-08 12:15:14', 1, 5);
+(4, 'งานวัด', 'ใหญ่มาก', '2024-03-08 12:15:14', 1, 5),
+(5, 'บาสเกตบอล', 'สนุกมากๆ', '2024-03-15 11:03:40', 3, 7);
 
 -- --------------------------------------------------------
 
@@ -112,7 +111,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `login`, `password`, `name`, `gender`, `email`, `role`) VALUES
 (5, 'Aom', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'SUU DAA', 'm', 'aaaaaa@email.com', 'm'),
-(6, 'AA', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'SUPTA', 'f', 'SSUUPPTA@email.com', 'm');
+(6, 'AA', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'SUPTA', 'f', 'SSUUPPTA@email.com', 'm'),
+(7, 'Axmjai', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'SSSS', 'm', 'axmjai@gmail.com', 'a');
 
 --
 -- Indexes for dumped tables
@@ -156,19 +156,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
